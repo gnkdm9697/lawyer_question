@@ -346,11 +346,17 @@
       .progress-bar {
         position: sticky;
         top: 0;
-        background: rgba(255, 255, 255, 0.98);
         z-index: 200;
-        padding: 12px;
-        margin: -12px -12px 20px -12px;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        padding: 12px 16px;  /* 上下左右に余白 */
+        margin: -20px -16px 20px -16px;  /* quiz-containerのpaddingを相殺 */
+        background: white;  /* 白背景で見やすく */
+        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+
+        /* プログレスバー自体のスタイル維持 */
+        height: 25px !important;  /* 高さを確実に維持 */
+        border-radius: 15px !important;
+        border: 2px solid rgba(122, 92, 75, 0.3) !important;
+        overflow: hidden;
       }
     }
 
