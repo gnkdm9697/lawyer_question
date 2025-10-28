@@ -344,19 +344,11 @@
     /* ===== Phase 2: 2.2.1 プログレスバーの固定（モバイル最適化） ===== */
     @media (max-width: 480px) {
       .progress-bar {
+        /* スティッキー設定のみ追加、他のスタイルは継承 */
         position: sticky;
         top: 0;
         z-index: 200;
-        padding: 12px 16px;  /* 上下左右に余白 */
-        margin: -20px -16px 20px -16px;  /* quiz-containerのpaddingを相殺 */
-        background: white;  /* 白背景で見やすく */
-        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-
-        /* プログレスバー自体のスタイル維持 */
-        height: 25px !important;  /* 高さを確実に維持 */
-        border-radius: 15px !important;
-        border: 2px solid rgba(122, 92, 75, 0.3) !important;
-        overflow: hidden;
+        margin-bottom: 20px;
       }
     }
 
