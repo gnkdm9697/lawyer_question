@@ -23,6 +23,13 @@
       position: relative;
     }
 
+    /* 1.2.2 本文フォントサイズの調整（モバイル最適化） */
+    @media (max-width: 480px) {
+      body {
+        font-size: 18px;
+      }
+    }
+
     body::before {
       content: '';
       position: fixed;
@@ -39,6 +46,14 @@
       max-width: 800px;
       margin: 0 auto;
       padding: 20px;
+    }
+
+    /* 1.3.1 コンテナの余白調整（モバイル最適化） */
+    @media (max-width: 480px) {
+      .container {
+        padding: 12px;
+        max-width: 100%;
+      }
     }
 
     .header {
@@ -122,6 +137,15 @@
       border: 1px solid rgba(255, 255, 255, 0.2);
     }
 
+    /* 1.3.2 クイズコンテナの余白調整（モバイル最適化） */
+    @media (max-width: 480px) {
+      .quiz-container {
+        padding: 20px 16px;
+        border-radius: 12px;
+        margin-bottom: 20px;
+      }
+    }
+
     .quiz-section {
       display: none;
     }
@@ -139,6 +163,15 @@
       padding-bottom: 15px;
       position: relative;
       font-weight: 600;
+    }
+
+    /* 1.2.3 カテゴリタイトルの調整（モバイル最適化） */
+    @media (max-width: 480px) {
+      .category-title {
+        font-size: 1.6em;
+        margin-bottom: 20px;
+        padding-bottom: 12px;
+      }
     }
 
     .category-title::after {
@@ -163,6 +196,15 @@
       transition: all 0.3s ease;
       position: relative;
       overflow: hidden;
+    }
+
+    /* 1.3.3 質問ブロックの余白調整（モバイル最適化） */
+    @media (max-width: 480px) {
+      .question {
+        padding: 20px 16px;
+        margin-bottom: 16px;
+        border-left-width: 4px;
+      }
     }
 
     .question::before {
@@ -191,11 +233,30 @@
       font-weight: 500;
     }
 
+    /* 1.2.1 質問文のフォントサイズ拡大（モバイル最適化） */
+    @media (max-width: 480px) {
+      .question-text {
+        font-size: 1.5em;
+        line-height: 1.7;
+        margin-bottom: 24px;
+      }
+    }
+
     .answer-buttons {
       display: flex;
       gap: 15px;
       justify-content: center;
       flex-wrap: wrap;
+    }
+
+    /* Phase 2: 2.1.1 回答ボタンコンテナの変更（縦配置化） */
+    @media (max-width: 480px) {
+      .answer-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+      }
     }
 
     .answer-btn {
@@ -278,6 +339,19 @@
       overflow: hidden;
       box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.1);
       border: 2px solid rgba(122, 92, 75, 0.3);
+    }
+
+    /* ===== Phase 2: 2.2.1 プログレスバーの固定（モバイル最適化） ===== */
+    @media (max-width: 480px) {
+      .progress-bar {
+        position: sticky;
+        top: 0;
+        background: rgba(255, 255, 255, 0.98);
+        z-index: 200;
+        padding: 12px;
+        margin: -12px -12px 20px -12px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      }
     }
 
     .progress-fill {
@@ -402,6 +476,16 @@
       transform: translateY(-2px);
     }
 
+    /* ===== Phase 2: 2.3.1 入力フィールドの拡大（モバイル最適化） ===== */
+    @media (max-width: 480px) {
+      .form-group input[type="text"],
+      .form-group input[type="email"] {
+        font-size: 16px;  /* iOSの自動ズーム防止 */
+        padding: 14px 16px;
+        height: 52px;
+      }
+    }
+
     .checkbox-group {
       display: flex;
       align-items: flex-start;
@@ -419,6 +503,26 @@
       margin: 0;
       font-weight: normal;
       line-height: 1.5;
+    }
+
+    /* ===== Phase 2: 2.3.2 チェックボックスの最適化（モバイル最適化） ===== */
+    @media (max-width: 480px) {
+      .checkbox-group label {
+        padding-left: 32px;
+        min-height: 44px;  /* iOS HIG準拠の最小タップエリア */
+        display: flex;
+        align-items: center;
+        position: relative;
+      }
+
+      .checkbox-group input[type="checkbox"] {
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%) scale(1.5);
+        width: 24px;
+        height: 24px;
+      }
     }
 
     .submit-btn {
@@ -519,6 +623,20 @@
     .message.show {
       display: block;
       animation: fadeIn 0.5s ease;
+    }
+
+    /* ===== Phase 2: 2.4.1 完了メッセージの調整（モバイル最適化） ===== */
+    @media (max-width: 480px) {
+      .message {
+        padding: 24px 20px;
+        margin: 20px 0;
+      }
+      .message h2 {
+        font-size: 1.6em;
+      }
+      .message p {
+        font-size: 1.1em;
+      }
     }
 
     /* レスポンシブ対応 */
@@ -810,24 +928,36 @@
       }
     }
 
-    /* スマホではロゴをフロー内にして余白ロスをゼロに */
+    /* ===== Phase 1: 1.4 ヘッダーレイアウトの最適化 (480px以下) ===== */
     @media (max-width: 480px) {
-      .header { 
-        padding-right: 16px !important;  /* 右の大きな余白を撤廃 */
-        padding-left: 16px !important;
+      /* 1.4.1 ヘッダーの余白削除 */
+      .header {
+        padding: 20px 16px !important;  /* padding-rightの大きな値(170px)を上書き */
+        text-align: center;
         display: flex;
         flex-direction: column;
         align-items: center;
         gap: 8px;
       }
 
+      /* 1.4.2 ロゴの配置調整 */
       .header-logo {
-        position: static !important;   /* 絶対配置やめる */
+        position: static !important;   /* 絶対配置を解除 */
         transform: none !important;
-        width: 88px !important;
+        display: block;
+        margin: 0 auto 16px;
+        width: 80px !important;
         height: auto;
-        margin: 0 auto 4px;
-        opacity: 0.95;
+      }
+
+      /* 1.4.3 ヘッダータイトルのサイズ調整 */
+      .header h1 {
+        font-size: 1.8em;
+        margin-bottom: 8px;
+      }
+
+      .header p {
+        font-size: 1em;
       }
 
       .header-content { text-align: center; }
@@ -980,6 +1110,40 @@
 button, .answer-btn, .next-btn, .submit-btn {
   -webkit-tap-highlight-color: rgba(0,0,0,0);
   touch-action: manipulation;
+}
+
+/* ========== Phase 1: ボタンサイズの最適化（480px以下） ========== */
+@media (max-width: 480px) {
+  /* 1.1.1 ○×回答ボタンの拡大 */
+  .answer-btn {
+    min-width: 100%;
+    min-height: 60px;
+    padding: 20px 30px;
+    font-size: 1.4em;
+    margin: 8px 0;
+    /* Phase 2: 2.1.2 個別ボタンの幅調整（全幅表示） */
+    width: 100%;
+    display: block;
+  }
+
+  /* 1.1.2 次へボタンの最適化 */
+  .next-btn {
+    width: 100%;
+    min-height: 56px;
+    font-size: 1.3em;
+    padding: 16px 32px;
+    position: sticky;
+    bottom: 10px;
+    z-index: 100;
+  }
+
+  /* 1.1.3 フォーム送信ボタンの最適化 */
+  .submit-btn {
+    width: 100%;
+    min-height: 56px;
+    font-size: 1.2em;
+    padding: 16px 24px;
+  }
 }
 
 /* ---------- モバイル可読性・操作性改善 共通ルール ---------- */
