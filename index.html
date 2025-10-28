@@ -505,8 +505,13 @@
 
     /* ===== Phase 2: 2.3.2 チェックボックスの最適化（モバイル最適化） ===== */
     @media (max-width: 480px) {
+      .checkbox-group {
+        margin-left: 16px;  /* 左余白を追加 */
+        margin-right: 16px;
+      }
+
       .checkbox-group label {
-        padding-left: 32px;
+        padding-left: 0;  /* パディングをリセット */
         min-height: 44px;  /* iOS HIG準拠の最小タップエリア */
         display: flex;
         align-items: center;
@@ -514,12 +519,11 @@
       }
 
       .checkbox-group input[type="checkbox"] {
-        position: absolute;
-        left: 0;
-        top: 50%;
-        transform: translateY(-50%) scale(1.5);
-        width: 24px;
-        height: 24px;
+        position: relative;  /* absoluteからrelativeに変更 */
+        margin-right: 12px;  /* チェックボックスとテキストの間隔 */
+        transform: scale(1.5);  /* 大きくする */
+        width: auto;
+        height: auto;
       }
     }
 
