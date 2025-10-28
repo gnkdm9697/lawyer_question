@@ -519,11 +519,60 @@
       }
 
       .checkbox-group input[type="checkbox"] {
-        position: relative;  /* absoluteからrelativeに変更 */
-        margin-right: 12px;  /* チェックボックスとテキストの間隔 */
-        transform: scale(1.5);  /* 大きくする */
-        width: auto;
-        height: auto;
+        /* デスクトップのスタイルを完全に上書き */
+        transform: none !important;  /* scaleをリセット */
+        -webkit-transform: none !important;
+
+        /* カスタムチェックボックス */
+        -webkit-appearance: none !important;  /* デフォルトスタイルをリセット */
+        -moz-appearance: none !important;
+        appearance: none !important;
+
+        /* 固定サイズ */
+        width: 24px !important;
+        height: 24px !important;
+        min-width: 24px !important;
+        min-height: 24px !important;
+        max-width: 24px !important;
+        max-height: 24px !important;
+
+        /* スタイル */
+        border: 2px solid #8B5A3C;
+        border-radius: 4px;
+        background: white;
+
+        /* 配置 */
+        position: relative;
+        margin: 0 12px 0 0 !important;
+        padding: 0 !important;
+
+        /* Flexbox制御 */
+        flex-shrink: 0;
+        flex-grow: 0;
+        flex-basis: 24px;
+
+        cursor: pointer;
+        vertical-align: middle;
+        display: inline-block;
+      }
+
+      /* チェック済み状態のスタイル */
+      .checkbox-group input[type="checkbox"]:checked {
+        background: #8B5A3C;
+        position: relative;
+      }
+
+      /* チェックマーク */
+      .checkbox-group input[type="checkbox"]:checked::after {
+        content: '✓';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        font-size: 16px;
+        font-weight: bold;
+        line-height: 1;
       }
     }
 
